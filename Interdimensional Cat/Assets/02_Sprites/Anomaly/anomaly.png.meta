@@ -1,10 +1,22 @@
 fileFormatVersion: 2
-guid: 978aa979f39e1f44b87fb84ff8dd2faf
+guid: 357253f306b94b84bbe7a37efd128200
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -6073926204589271021
-    second: roof_ice tut_0
+      213: 687793465610328765
+    second: anomaly_0
+  - first:
+      213: 2342431958890954315
+    second: anomaly_1
+  - first:
+      213: -3537364416895155584
+    second: anomaly_2
+  - first:
+      213: -4818480780770604605
+    second: anomaly_3
+  - first:
+      213: -8957019467067281709
+    second: anomaly_4
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -51,7 +63,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 85
+  spritePixelsToUnits: 59
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -100,23 +112,111 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: roof_ice tut_0
+      name: anomaly_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 110
-        width: 160
-        height: 10
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+        x: 3
+        y: 2
+        width: 62
+        height: 56
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 31815874c4415bba0800000000000000
-      internalID: -6073926204589271021
+      spriteID: dbad98c43888b8900800000000000000
+      internalID: 687793465610328765
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: anomaly_1
+      rect:
+        serializedVersion: 2
+        x: 67
+        y: 2
+        width: 62
+        height: 56
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b4eb734b47df18020800000000000000
+      internalID: 2342431958890954315
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: anomaly_2
+      rect:
+        serializedVersion: 2
+        x: 131
+        y: 2
+        width: 62
+        height: 56
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0828bd9fdc1c8eec0800000000000000
+      internalID: -3537364416895155584
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: anomaly_3
+      rect:
+        serializedVersion: 2
+        x: 195
+        y: 2
+        width: 62
+        height: 56
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3c90f116241512db0800000000000000
+      internalID: -4818480780770604605
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: anomaly_4
+      rect:
+        serializedVersion: 2
+        x: 259
+        y: 2
+        width: 62
+        height: 56
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3de2233404642b380800000000000000
+      internalID: -8957019467067281709
       vertices: []
       indices: 
       edges: []
@@ -125,7 +225,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 5817088718282ee4d9c5b8ddf9d375dd
+    spriteID: a11d1d270def7fa4f828d21f94110fdd
     internalID: 0
     vertices: []
     indices: 
@@ -135,7 +235,11 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      roof_ice tut_0: -6073926204589271021
+      anomaly_0: 687793465610328765
+      anomaly_1: 2342431958890954315
+      anomaly_2: -3537364416895155584
+      anomaly_3: -4818480780770604605
+      anomaly_4: -8957019467067281709
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

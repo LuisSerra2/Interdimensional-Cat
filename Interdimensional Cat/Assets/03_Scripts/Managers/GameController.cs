@@ -7,6 +7,7 @@ public class GameController : MonoBehaviour
 
     [SerializeField] private SoundManager soundManager;
     [SerializeField] private SoundInputManager soundInputManager;
+    [SerializeField] private ScoreManager scoreManager;
 
     private void Awake()
     {
@@ -23,20 +24,22 @@ public class GameController : MonoBehaviour
 
     private void Start()
     {
-        if (soundManager == null || soundInputManager == null)
+        if (soundManager == null || soundInputManager == null || scoreManager == null)
         {
             Debug.LogError("SoundManager ou SoundInputManager não foram atribuídos no Inspector!");
             return;
         }
 
-        Initialize(soundManager, soundInputManager);
+        Initialize(soundManager, soundInputManager, scoreManager);
     }
 
-    public void Initialize(SoundManager sm, SoundInputManager sim)
+    public void Initialize(SoundManager sm, SoundInputManager sim, ScoreManager scoreM)
     {
         soundManager = sm;
         soundInputManager = sim;
+        scoreManager = scoreM;
         SoundsLoad();
+        LoadFish();
     }
 
     #region Sounds
@@ -106,8 +109,29 @@ public class GameController : MonoBehaviour
 
     #endregion
 
-    #region Save And Load
+    #region ScoreManager
+
+    public void OnCatchFish()
+    {
+        scoreManager.OnCatchFish();
+    }
+
+    public void SaveFish()
+    {
+        scoreManager.Save();
+    }
+
+    public void LoadFish()
+    {
+        scoreManager.Load();
+    }
 
     #endregion
+
+    private void OnApplicationQuit()
+    {
+        SoundsSave();
+        SaveFish();
+    }
 
 }

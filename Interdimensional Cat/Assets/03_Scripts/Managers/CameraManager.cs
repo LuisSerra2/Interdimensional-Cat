@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using Unity.Cinemachine;
+using UnityEditor.Tilemaps;
 using UnityEngine;
 
 public class CameraManager : MonoBehaviour
@@ -17,14 +18,12 @@ public class CameraManager : MonoBehaviour
     public bool lerpedFromPlayerFalling { get; set; }
 
     private Coroutine lerpYPanCoroutine;
-    private Coroutine panCameraCoroutine;
 
     private CinemachineCamera currentCamera;
     private CinemachinePositionComposer positionComposer;
 
     private float normYPanAmount;
 
-    private Vector2 startingTrackedObjectOffset;
 
 
     private void Awake()
@@ -46,7 +45,6 @@ public class CameraManager : MonoBehaviour
 
         normYPanAmount = positionComposer.Damping.y;
 
-        //startingTrackedObjectOffset = positionComposer.
     }
 
     public void LerpYDamping(bool isPlayerFalling)

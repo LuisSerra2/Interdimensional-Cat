@@ -150,4 +150,12 @@ public class PlayerController : MonoBehaviour
             cameraFollowObject.CallTurn();
         }
     }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.TryGetComponent(out IInteractable interactable))
+        {
+            interactable.OnInteract();
+        }
+    }
 }
