@@ -27,6 +27,7 @@ public class Anomaly : MonoBehaviour, IInteractable
         if (timer <= 0)
         {
             anomalyTime = false;
+            GameController.Instance.OnAnomalyFinishEvent();
             OnAnomaly(Vector4.one, true);
             timer = defaultTimer;
 
@@ -36,7 +37,7 @@ public class Anomaly : MonoBehaviour, IInteractable
     public void OnInteract()
     {
         anomalyTime = true;
-        //GameController.Instance.ChangeDimension();
+        GameController.Instance.OnAnomalyEvent();
         OnAnomaly(Vector4.zero, false);
     }
 

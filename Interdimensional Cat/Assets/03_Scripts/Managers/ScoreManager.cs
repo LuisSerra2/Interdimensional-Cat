@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.Splines.ExtrusionShapes;
 
@@ -7,7 +8,7 @@ public class ScoreManager : MonoBehaviour
 
     private int fish = 0;
 
-    public bool resetFish;
+    public bool resetFish; 
 
     private void Start()
     {

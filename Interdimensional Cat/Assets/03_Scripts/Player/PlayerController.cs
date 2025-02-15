@@ -1,8 +1,18 @@
 using System;
+using UnityEditor.Tilemaps;
 using UnityEngine;
+
+public enum GameState
+{
+    Intro,
+    Playing,
+    Menu
+}
 
 public class PlayerController : MonoBehaviour
 {
+    public GameState gameState => GameController.Instance.GameState;
+
     [Header("Movement")]
     [SerializeField] private float moveSpeed = 8f;
     [SerializeField] private float acceleration = 10f;
@@ -38,23 +48,85 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private GameObject cameraFollow;
     private float fallSpeedYDampingChangeThreshold;
 
-
-
     private Rigidbody2D rb;
     private CameraFollowObject cameraFollowObject;
+    private Animator animator;
 
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        animator = GetComponentInChildren<Animator>();
         cameraFollowObject = cameraFollow.GetComponent<CameraFollowObject>();
 
         rb.gravityScale = gravityScale;
         isFacingRight = true;
 
         fallSpeedYDampingChangeThreshold = CameraManager.instance.fallSpeedYDampingChangeThreshold;
+
+        GameController.Instance.ChangeState(gameState);
     }
 
     void Update()
+    {
+        switch (gameState)
+        {
+            case GameState.Intro:
+                if (Input.GetKeyDown(KeyCode.Escape))
+                {
+                    GameController.Instance.ChangeState(GameState.Playing);
+                }
+                break;
+            case GameState.Playing:
+                Inputs();
+                break;
+            case GameState.Menu:
+                if (Input.GetKeyDown(KeyCode.Escape))
+                {
+                    GameController.Instance.ChangeState(GameState.Playing);
+                    GameController.Instance.OnMenuEvent();
+                }
+                break;
+        }
+
+    }
+
+
+    private void FixedUpdate()
+    {
+        switch (gameState)
+        {
+            case GameState.Intro:
+                break;
+            case GameState.Playing:
+                rb.linearVelocity = new Vector2(rb.linearVelocity.x + movement, rb.linearVelocity.y);
+
+                if (jumpBufferCounter > 0 && coyoteTimeCounter > 0)
+                {
+                    rb.linearVelocity = new Vector2(rb.linearVelocity.x, jumpForce);
+                    jumpBufferCounter = 0;
+                    coyoteTimeCounter = 0;
+                    animator.SetTrigger("Jump");
+                }
+
+                if (rb.linearVelocity.y < 0)
+                {
+                    rb.linearVelocity += Vector2.up * Physics2D.gravity.y * (fallMultiplier - 1) * Time.deltaTime;
+                }
+
+                if (moveInput.x > 0 || moveInput.x < 0)
+                {
+                    TurnCheck();
+                }
+                break;
+            case GameState.Menu:
+                rb.linearVelocity = Vector2.zero;
+                break;
+        }
+
+
+    }
+
+    private void Inputs()
     {
         moveInput = new Vector2(Input.GetAxisRaw("Horizontal"), 0);
         float targetSpeed = moveInput.x * moveSpeed;
@@ -62,15 +134,20 @@ public class PlayerController : MonoBehaviour
         float accelRate = (Mathf.Abs(targetSpeed) > 0.01f) ? acceleration : deceleration;
         movement = speedDif * accelRate * Time.deltaTime;
 
-
+        bool wasGrounded = isGrounded;
         isGrounded = Physics2D.OverlapCircle(groundCheck.position, 0.2f, groundLayer);
 
         if (isGrounded)
         {
             coyoteTimeCounter = coyoteTime;
+            animator.SetBool("isFalling", false);
         } else
         {
             coyoteTimeCounter -= Time.deltaTime;
+            if (rb.linearVelocity.y < 0)
+            {
+                animator.SetBool("isFalling", true);
+            }
         }
 
         if (Input.GetButtonDown("Jump"))
@@ -81,50 +158,24 @@ public class PlayerController : MonoBehaviour
             jumpBufferCounter -= Time.deltaTime;
         }
 
-        if (rb.linearVelocity.y < fallSpeedYDampingChangeThreshold && !CameraManager.instance.isLerpingYDamping && !CameraManager.instance.lerpedFromPlayerFalling)
+        if (wasGrounded && !isGrounded && rb.linearVelocity.y < 0)
         {
-            CameraManager.instance.LerpYDamping(true);
+            animator.SetBool("isFalling", true);
         }
 
-        if (rb.linearVelocity.y >= 0f && !CameraManager.instance.isLerpingYDamping && !CameraManager.instance.lerpedFromPlayerFalling)
+        animator.SetBool("isRunning", moveInput.x != 0 && isGrounded);
+        animator.SetBool("isGrounded", isGrounded);
+
+        if (Input.GetKeyDown(KeyCode.Escape))
         {
-            CameraManager.instance.lerpedFromPlayerFalling = false;
-
-            CameraManager.instance.LerpYDamping(false);
-        }
-
-    }
-
-    private void FixedUpdate()
-    {
-        rb.linearVelocity = new Vector2(rb.linearVelocity.x + movement, rb.linearVelocity.y);
-
-        if (jumpBufferCounter > 0 && coyoteTimeCounter > 0)
-        {
-            rb.linearVelocity = new Vector2(rb.linearVelocity.x, jumpForce);
-            jumpBufferCounter = 0;
-            coyoteTimeCounter = 0;
-        }
-
-        if (rb.linearVelocity.y < 0)
-        {
-            rb.linearVelocity += Vector2.up * Physics2D.gravity.y * (fallMultiplier - 1) * Time.deltaTime;
-        }
-
-        if (moveInput.x > 0 || moveInput.x < 0)
-        {
-            TurnCheck();
+            GameController.Instance.ChangeState(GameState.Menu);
+            GameController.Instance.OnMenuEvent();
         }
     }
 
     private void TurnCheck()
     {
-        if (moveInput.x > 0 && !isFacingRight)
-        {
-            Turn();
-        } 
-        
-        else if (moveInput.x < 0 && isFacingRight)
+        if ((moveInput.x > 0 && !isFacingRight) || (moveInput.x < 0 && isFacingRight))
         {
             Turn();
         }
@@ -132,23 +183,9 @@ public class PlayerController : MonoBehaviour
 
     private void Turn()
     {
-        if (isFacingRight)
-        {
-            Vector3 rotator = new Vector3 (transform.rotation.x, 180f, transform.rotation.z);
-            transform.rotation = Quaternion.Euler(rotator);
-            isFacingRight = !isFacingRight;
-
-            cameraFollowObject.CallTurn();
-        } 
-        
-        else
-        {
-            Vector3 rotator = new Vector3(transform.rotation.x, 0f, transform.rotation.z);
-            transform.rotation = Quaternion.Euler(rotator);
-            isFacingRight = !isFacingRight;
-
-            cameraFollowObject.CallTurn();
-        }
+        isFacingRight = !isFacingRight;
+        transform.Rotate(0f, 180f, 0f);
+        cameraFollowObject.CallTurn();
     }
 
     private void OnTriggerEnter2D(Collider2D collision)

@@ -1,13 +1,38 @@
+using System;
 using UnityEngine;
 
 public class GameController : MonoBehaviour
 {
+    private GameState gameState;
+
     private static GameController instance;
     public static GameController Instance => instance;
 
     [SerializeField] private SoundManager soundManager;
     [SerializeField] private SoundInputManager soundInputManager;
     [SerializeField] private ScoreManager scoreManager;
+
+    #region Anomaly
+    [HideInInspector]
+    public Action OnAnomaly;
+    [HideInInspector]
+    public Action OnAnomalyFinish;
+    #endregion
+
+    #region portal
+    [HideInInspector]
+    public Action OnPortalUnlock;
+    #endregion
+
+    #region Runes
+    [HideInInspector]
+    public Action OnPickRune;
+    #endregion
+
+    #region Menu
+    [HideInInspector]
+    public Action OnMenu;
+    #endregion
 
     private void Awake()
     {
@@ -126,6 +151,54 @@ public class GameController : MonoBehaviour
         scoreManager.Load();
     }
 
+    #endregion
+
+    #region Observer
+
+    #region Anomaly
+    public void OnAnomalyEvent()
+    {
+        OnAnomaly?.Invoke();
+    }
+    public void OnAnomalyFinishEvent()
+    {
+        OnAnomalyFinish?.Invoke();
+    }
+    #endregion
+
+    #region Runes
+    public void OnPickRuneEvent()
+    {
+        OnPickRune?.Invoke();
+    }
+
+    #endregion
+
+    #region Runes
+    public void OnPortalUnlockEvent()
+    {
+        OnPortalUnlock?.Invoke();
+    }
+
+    #endregion
+
+    #region Menu
+    public void OnMenuEvent()
+    {
+        OnMenu?.Invoke();
+    }
+
+    #endregion
+
+    #endregion
+
+    #region States
+    public void ChangeState(GameState state)
+    {
+        gameState = state;
+    }
+
+    public GameState GameState { get { return gameState; } }
     #endregion
 
     private void OnApplicationQuit()
