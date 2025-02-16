@@ -1,5 +1,4 @@
 using System;
-using UnityEditor.Tilemaps;
 using UnityEngine;
 
 public enum GameState
@@ -63,7 +62,7 @@ public class PlayerController : MonoBehaviour
 
         fallSpeedYDampingChangeThreshold = CameraManager.instance.fallSpeedYDampingChangeThreshold;
 
-        GameController.Instance.ChangeState(gameState);
+        GameController.Instance.ChangeState(GameState.Intro);
     }
 
     void Update()

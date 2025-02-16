@@ -1,13 +1,52 @@
 fileFormatVersion: 2
-guid: 1968195729efd4242ac1735365e45b07
+guid: 94d04e84f35e675409d0c6e3ef9f86b9
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -9175201178535676686
-    second: bg_ice1_0
+      213: -7593425578319361836
+    second: bg_ice1.2_0
   - first:
-      213: -7572729998682423364
-    second: bg_ice1_1
+      213: 2230052914457047255
+    second: bg_ice1.2_1
+  - first:
+      213: -413432778546029888
+    second: bg_ice1.2_2
+  - first:
+      213: 6437194948769608886
+    second: bg_ice1.2_3
+  - first:
+      213: -717900370413095089
+    second: bg_ice1.2_4
+  - first:
+      213: 3889121405393095774
+    second: bg_ice1.2_5
+  - first:
+      213: 5939936934028092834
+    second: bg_ice1.2_6
+  - first:
+      213: 5559371075335431294
+    second: bg_ice1.2_7
+  - first:
+      213: -7987876722556433677
+    second: bg_ice1.2_8
+  - first:
+      213: -5712044063088515129
+    second: bg_ice1.2_9
+  - first:
+      213: 4552706866596341625
+    second: bg_ice1.2_10
+  - first:
+      213: 337836552584211491
+    second: bg_ice1.2_11
+  - first:
+      213: 2260250422766447144
+    second: bg_ice1.2_12
+  - first:
+      213: 4863470713353904594
+    second: bg_ice1.2_13
+  - first:
+      213: 5788277061061373364
+    second: bg_ice1.2_14
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -103,7 +142,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: bg_ice1_0
+      name: bg_ice1.2_0
       rect:
         serializedVersion: 2
         x: 0
@@ -111,15 +150,301 @@ TextureImporter:
         width: 1920
         height: 1080
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 2f4b2a2f3232ba080800000000000000
-      internalID: -9175201178535676686
+      spriteID: 4d8c8ef0babbe9690800000000000000
+      internalID: -7593425578319361836
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bg_ice1.2_1
+      rect:
+        serializedVersion: 2
+        x: 476
+        y: 597
+        width: 17
+        height: 17
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7d079847f4db2fe10800000000000000
+      internalID: 2230052914457047255
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bg_ice1.2_2
+      rect:
+        serializedVersion: 2
+        x: 1300
+        y: 591
+        width: 17
+        height: 17
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0cad2401411334af0800000000000000
+      internalID: -413432778546029888
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bg_ice1.2_3
+      rect:
+        serializedVersion: 2
+        x: 828
+        y: 545
+        width: 17
+        height: 17
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6b4f95f33b2855950800000000000000
+      internalID: 6437194948769608886
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bg_ice1.2_4
+      rect:
+        serializedVersion: 2
+        x: 1316
+        y: 559
+        width: 17
+        height: 17
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f47f76daa618906f0800000000000000
+      internalID: -717900370413095089
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bg_ice1.2_5
+      rect:
+        serializedVersion: 2
+        x: 816
+        y: 525
+        width: 17
+        height: 17
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e5cc2d0105fe8f530800000000000000
+      internalID: 3889121405393095774
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bg_ice1.2_6
+      rect:
+        serializedVersion: 2
+        x: 368
+        y: 411
+        width: 17
+        height: 17
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2a5a7fc9b25ee6250800000000000000
+      internalID: 5939936934028092834
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bg_ice1.2_7
+      rect:
+        serializedVersion: 2
+        x: 1212
+        y: 409
+        width: 17
+        height: 17
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e7423f7c98ad62d40800000000000000
+      internalID: 5559371075335431294
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bg_ice1.2_8
+      rect:
+        serializedVersion: 2
+        x: 1656
+        y: 395
+        width: 17
+        height: 17
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3fa8962417c552190800000000000000
+      internalID: -7987876722556433677
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bg_ice1.2_9
+      rect:
+        serializedVersion: 2
+        x: 136
+        y: 367
+        width: 17
+        height: 17
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7c7ea36303ebab0b0800000000000000
+      internalID: -5712044063088515129
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bg_ice1.2_10
+      rect:
+        serializedVersion: 2
+        x: 1636
+        y: 359
+        width: 17
+        height: 17
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 977e4fd16c67e2f30800000000000000
+      internalID: 4552706866596341625
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bg_ice1.2_11
+      rect:
+        serializedVersion: 2
+        x: 148
+        y: 343
+        width: 17
+        height: 17
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 32cacecfd8c30b400800000000000000
+      internalID: 337836552584211491
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bg_ice1.2_12
+      rect:
+        serializedVersion: 2
+        x: 310
+        y: 303
+        width: 17
+        height: 17
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 82aab60c8c50e5f10800000000000000
+      internalID: 2260250422766447144
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bg_ice1.2_13
+      rect:
+        serializedVersion: 2
+        x: 940
+        y: 313
+        width: 17
+        height: 17
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2d1a9f498d48e7340800000000000000
+      internalID: 4863470713353904594
       vertices: []
       indices: 
       edges: []
@@ -128,7 +453,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: fc3beeb12d4b49e4d8daeaa8ae187ca3
+    spriteID: 79d242451c18b3447a976dc6425dabfd
     internalID: 0
     vertices: []
     indices: 
@@ -138,8 +463,21 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      bg_ice1_0: -9175201178535676686
-      bg_ice1_1: -7572729998682423364
+      bg_ice1.2_0: -7593425578319361836
+      bg_ice1.2_1: 2230052914457047255
+      bg_ice1.2_10: 4552706866596341625
+      bg_ice1.2_11: 337836552584211491
+      bg_ice1.2_12: 2260250422766447144
+      bg_ice1.2_13: 4863470713353904594
+      bg_ice1.2_14: 5788277061061373364
+      bg_ice1.2_2: -413432778546029888
+      bg_ice1.2_3: 6437194948769608886
+      bg_ice1.2_4: -717900370413095089
+      bg_ice1.2_5: 3889121405393095774
+      bg_ice1.2_6: 5939936934028092834
+      bg_ice1.2_7: 5559371075335431294
+      bg_ice1.2_8: -7987876722556433677
+      bg_ice1.2_9: -5712044063088515129
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

@@ -48,19 +48,21 @@ public class SoundsInput : MonoBehaviour
     private void MusicToggle()
     {
         GameController.Instance.MusicToggle(musicToggle.isOn);
+        ChangeMusicSprite(musicToggle.isOn);
     }
 
     private void SoundToggle()
     {
         GameController.Instance.SoundToggle(soundToggle.isOn);
+        ChangeSoundSprite(soundToggle.isOn);
     }
 
     public void ChangeMusicSprite(bool active)
     {
-        musicToggle.transform.GetChild(0).GetChild(0).GetComponent<Image>().sprite = active ? musicToggleSpriteOn : musicToggleSpriteOff;
+        musicToggle.transform.GetChild(0).GetComponent<Image>().sprite = active ? musicToggleSpriteOn : musicToggleSpriteOff;
     }
     public void ChangeSoundSprite(bool active)
     {
-        soundToggle.transform.GetChild(0).GetChild(0).GetComponent<Image>().sprite = active ? soundToggleSpriteOn : soundToggleSpriteOff;
+        soundToggle.transform.GetChild(0).GetComponent<Image>().sprite = active ? soundToggleSpriteOn : soundToggleSpriteOff;
     }
 }

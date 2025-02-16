@@ -28,7 +28,7 @@ public class Anomaly : MonoBehaviour, IInteractable
         {
             anomalyTime = false;
             GameController.Instance.OnAnomalyFinishEvent();
-            OnAnomaly(Vector4.one, true);
+            OnAnomaly(1, true);
             timer = defaultTimer;
 
         }
@@ -38,12 +38,15 @@ public class Anomaly : MonoBehaviour, IInteractable
     {
         anomalyTime = true;
         GameController.Instance.OnAnomalyEvent();
-        OnAnomaly(Vector4.zero, false);
+        OnAnomaly(0, false);
     }
 
-    private void OnAnomaly(Vector4 vector, bool active)
+    private void OnAnomaly(float alpha, bool active)
     {
-        anomalyVisual.color = vector;
+        Color color = anomalyVisual.color;
+        color.a = alpha;
+        anomalyVisual.color = color; 
         circleCollider.enabled = active;
     }
+
 }

@@ -3,6 +3,7 @@ using UnityEngine;
 
 public class ChangeDimension : MonoBehaviour
 {
+    [SerializeField] private bool OnNether;
 
     [Header("Ice Object")]
     [SerializeField] private GameObject IceObjects;
@@ -11,6 +12,9 @@ public class ChangeDimension : MonoBehaviour
 
     [Header("Nether Object")]
     [SerializeField] private GameObject NetherObjects;
+
+
+
 
     private void OnEnable()
     {
@@ -26,13 +30,27 @@ public class ChangeDimension : MonoBehaviour
     }
     private void OnChangeDimension()
     {
-        IceObjects.SetActive(false);
-        NetherObjects.SetActive(true);
+        if (OnNether)
+        {
+            NetherObjects.SetActive(false);
+            IceObjects.SetActive(true);
+        } else
+        {
+            IceObjects.SetActive(false);
+            NetherObjects.SetActive(true);
+        }
     }
 
     private void OnChangeDimensionFinish()
     {
-        NetherObjects.SetActive(false);
-        IceObjects.SetActive(true);
+        if (OnNether)
+        {
+            IceObjects.SetActive(false);
+            NetherObjects.SetActive(true);
+        } else
+        {
+            NetherObjects.SetActive(false);
+            IceObjects.SetActive(true);
+        }
     }
 }

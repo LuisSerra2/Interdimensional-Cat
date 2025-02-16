@@ -1,7 +1,6 @@
 using System;
 using System.Collections;
 using Unity.Cinemachine;
-using UnityEditor.Tilemaps;
 using UnityEngine;
 
 public class CameraManager : MonoBehaviour
