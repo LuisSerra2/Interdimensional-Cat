@@ -14,14 +14,12 @@ public class ChangeDimension : MonoBehaviour
     [SerializeField] private GameObject NetherObjects;
 
 
-
-
     private void OnEnable()
     {
         GameController.Instance.OnAnomaly += OnChangeDimension;
         GameController.Instance.OnAnomalyFinish += OnChangeDimensionFinish;
-    }
 
+    }
 
     private void OnDisable()
     {
@@ -30,6 +28,7 @@ public class ChangeDimension : MonoBehaviour
     }
     private void OnChangeDimension()
     {
+        GameController.Instance.PlaySound(SoundType.ChangeDimension);
         if (OnNether)
         {
             NetherObjects.SetActive(false);
@@ -43,6 +42,7 @@ public class ChangeDimension : MonoBehaviour
 
     private void OnChangeDimensionFinish()
     {
+
         if (OnNether)
         {
             IceObjects.SetActive(false);

@@ -16,8 +16,11 @@ public class GameController : MonoBehaviour
     [HideInInspector]
     public Action OnAnomaly;
     [HideInInspector]
+    public Action<AnomalyData> OnAnomalyData;
+    [HideInInspector]
     public Action OnAnomalyFinish;
     #endregion
+    
 
     #region portal
     [HideInInspector]
@@ -32,6 +35,11 @@ public class GameController : MonoBehaviour
     #region Menu
     [HideInInspector]
     public Action OnMenu;
+    #endregion
+    
+    #region ChangeSprite
+    [HideInInspector]
+    public Action<bool> OnChangeSprite;
     #endregion
 
     private void Awake()
@@ -141,6 +149,9 @@ public class GameController : MonoBehaviour
         scoreManager.OnCatchFish();
     }
 
+    public float GetFish() => scoreManager.GetFish();
+
+
     public void SaveFish()
     {
         scoreManager.Save();
@@ -160,6 +171,11 @@ public class GameController : MonoBehaviour
     {
         OnAnomaly?.Invoke();
     }
+    public void OnAnomalyEvent(AnomalyData anomalyData)
+    {
+        OnAnomalyData?.Invoke(anomalyData); 
+    }
+
     public void OnAnomalyFinishEvent()
     {
         OnAnomalyFinish?.Invoke();
@@ -174,7 +190,7 @@ public class GameController : MonoBehaviour
 
     #endregion
 
-    #region Runes
+    #region Portal
     public void OnPortalUnlockEvent()
     {
         OnPortalUnlock?.Invoke();
@@ -186,6 +202,14 @@ public class GameController : MonoBehaviour
     public void OnMenuEvent()
     {
         OnMenu?.Invoke();
+    }
+
+    #endregion
+    
+    #region ChangeSprite
+    public void OnChangeSpriteEvent(bool active)
+    {
+        OnChangeSprite?.Invoke(active);
     }
 
     #endregion

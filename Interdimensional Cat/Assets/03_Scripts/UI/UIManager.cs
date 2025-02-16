@@ -1,18 +1,20 @@
 using DG.Tweening;
 using System;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class UIManager : MonoBehaviour
 {
-    bool _canSwitch = true;
+    [SerializeField] private TextMeshProUGUI fishScore;
 
     [Header("MainMenu")]
     public List<MainMenuData> mainMenuData = new List<MainMenuData>();
 
     public bool animationChange;
 
+    bool _canSwitch = true;
 
     private void Start()
     {
@@ -22,8 +24,11 @@ public class UIManager : MonoBehaviour
         }
 
         SetupMainMenuButtons();
+
+        UpdateFishScore();
     }
 
+    #region UI Panels
     private void SetupMainMenuButtons()
     {
         foreach (MainMenuData menu in mainMenuData)
@@ -67,6 +72,12 @@ public class UIManager : MonoBehaviour
                 }
             }
         }
+    }
+    #endregion
+
+    private void UpdateFishScore()
+    {
+        fishScore.text = $" {GameController.Instance.GetFish()}";
     }
 }
 

@@ -12,11 +12,19 @@ public enum SoundType
 {
     ButtonsOnHover,
     ButtonsClick,
+    ButtonBack,
+    SpikeFall,
+    PickUpRune,
+    FishPickUp,
+    Jump,
+    Death,
+    ChangeDimension
 }
 
 public enum MusicType
 {
     MainMenu,
+    Playing
 }
 
 [ExecuteInEditMode]

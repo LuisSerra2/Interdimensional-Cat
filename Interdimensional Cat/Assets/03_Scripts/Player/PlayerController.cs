@@ -1,10 +1,14 @@
+using DG.Tweening;
 using System;
+using System.Collections;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public enum GameState
 {
     Intro,
     Playing,
+    Death,
     Menu
 }
 
@@ -47,9 +51,31 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private GameObject cameraFollow;
     private float fallSpeedYDampingChangeThreshold;
 
+    [Space]
+
+    [Header("OnDeath")]
+    [SerializeField] private CanvasGroup deathPanelCG;
+
     private Rigidbody2D rb;
     private CameraFollowObject cameraFollowObject;
     private Animator animator;
+    private HealthSystem healthSystem;
+
+    private void Awake()
+    {
+        healthSystem = new HealthSystem(1);
+    }
+
+    private void OnEnable()
+    {
+        healthSystem.OnDeath += OnDeath;
+    }
+
+    private void OnDisable()
+    {
+        healthSystem.OnDeath -= OnDeath;
+
+    }
 
     void Start()
     {
@@ -70,13 +96,17 @@ public class PlayerController : MonoBehaviour
         switch (gameState)
         {
             case GameState.Intro:
-                if (Input.GetKeyDown(KeyCode.Escape))
-                {
-                    GameController.Instance.ChangeState(GameState.Playing);
-                }
+
                 break;
             case GameState.Playing:
                 Inputs();
+                if (Input.GetKeyDown(KeyCode.V))
+                {
+                    TakeHit(1);
+                }
+                break;
+            case GameState.Death:
+
                 break;
             case GameState.Menu:
                 if (Input.GetKeyDown(KeyCode.Escape))
@@ -105,6 +135,7 @@ public class PlayerController : MonoBehaviour
                     jumpBufferCounter = 0;
                     coyoteTimeCounter = 0;
                     animator.SetTrigger("Jump");
+                    GameController.Instance.PlaySound(SoundType.Jump);
                 }
 
                 if (rb.linearVelocity.y < 0)
@@ -125,6 +156,7 @@ public class PlayerController : MonoBehaviour
 
     }
 
+    #region Movement
     private void Inputs()
     {
         moveInput = new Vector2(Input.GetAxisRaw("Horizontal"), 0);
@@ -185,6 +217,36 @@ public class PlayerController : MonoBehaviour
         isFacingRight = !isFacingRight;
         transform.Rotate(0f, 180f, 0f);
         cameraFollowObject.CallTurn();
+    }
+
+    #endregion
+
+    public void TakeHit(int damage)
+    {
+        if (healthSystem.GetCurrentHealth() <= 0) return;
+        healthSystem.TakeDamage(damage);
+    }
+
+    private void OnDeath()
+    {
+        StartCoroutine(OnDeathAnimation());
+    }
+
+    private IEnumerator OnDeathAnimation()
+    {
+        GameController.Instance.ChangeState(GameState.Death);
+
+        animator.SetTrigger("Dead");
+        GameController.Instance.PlaySound(SoundType.Death);
+
+        yield return new WaitForSeconds(1f);
+
+        deathPanelCG.DOFade(1, 2).OnComplete(() =>
+        {
+            string sceneName = SceneManager.GetActiveScene().name;
+
+            SceneManager.LoadScene(sceneName);
+        });
     }
 
     private void OnTriggerEnter2D(Collider2D collision)

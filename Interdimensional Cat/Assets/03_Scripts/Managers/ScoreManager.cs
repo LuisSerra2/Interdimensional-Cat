@@ -7,13 +7,11 @@ public class ScoreManager : MonoBehaviour
 
     private int fish = 0;
 
-    public bool resetFish; 
+    public bool resetFish;
 
     private void Start()
     {
         Initialize();
-
-        Debug.Log(fish);
     }
 
     private void Initialize()
@@ -31,6 +29,8 @@ public class ScoreManager : MonoBehaviour
     {
         fish++;
     }
+
+    public float GetFish() => fish;
 
     public void Save()
     {
