@@ -7,7 +7,17 @@ public class Spike : MonoBehaviour
     {
         if (collision.gameObject.TryGetComponent(out PlayerController playerController))
         {
-            Debug.Log("Hit");
+            playerController.TakeHit(1);
+        } else
+        {
+            Destroy(gameObject);
+        }
+    }
+
+    private void OnCollisionStay2D(Collision2D collision)
+    {
+        if (collision.gameObject.TryGetComponent(out PlayerController playerController))
+        {
             playerController.TakeHit(1);
         } else
         {

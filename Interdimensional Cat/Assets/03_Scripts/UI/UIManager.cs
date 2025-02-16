@@ -8,6 +8,7 @@ using UnityEngine.UI;
 public class UIManager : MonoBehaviour
 {
     [SerializeField] private TextMeshProUGUI fishScore;
+    [SerializeField] private Button ExitGame;
 
     [Header("MainMenu")]
     public List<MainMenuData> mainMenuData = new List<MainMenuData>();
@@ -18,6 +19,8 @@ public class UIManager : MonoBehaviour
 
     private void Start()
     {
+        ExitGame.onClick.AddListener(OnExitGame);
+
         for (int i = 0; i < mainMenuData.Count; i++)
         {
             mainMenuData[i].inCenter = (i == 0);
@@ -26,6 +29,11 @@ public class UIManager : MonoBehaviour
         SetupMainMenuButtons();
 
         UpdateFishScore();
+    }
+
+    private void OnExitGame()
+    {
+        Application.Quit();
     }
 
     #region UI Panels

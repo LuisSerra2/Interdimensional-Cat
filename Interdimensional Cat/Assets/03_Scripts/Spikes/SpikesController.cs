@@ -33,22 +33,6 @@ public class SpikesController : MonoBehaviour, IInteractable
                 GameController.Instance.PlaySound(SoundType.SpikeFall);
             }
             yield return new WaitForSeconds(delayBetweenSpikes);
-        }
-
-        yield return new WaitForSeconds(.2f);
-
-        foreach (GameObject spike in spikes)
-        {
-            BoxCollider2D col = spike.GetComponent<BoxCollider2D>();
-            if (col != null)
-            {
-                col.isTrigger = false;
-            }
-            yield return new WaitForSeconds(delayBetweenSpikes);
-        }
-
-        
+        }     
     }
-
-
 }
