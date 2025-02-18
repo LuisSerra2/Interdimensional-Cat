@@ -100,7 +100,7 @@ public class LevelMenu : MonoBehaviour
             levelsButtons[i].interactable = false;
         }
 
-        for (int i = 0; i < GetResetPlayerPrefab(); i++)
+        for (int i = 0; i < Mathf.Min(GetResetPlayerPrefab(), levelsButtons.Length); i++)
         {
             levelsButtons[i].interactable = true;
         }
@@ -115,6 +115,7 @@ public class LevelMenu : MonoBehaviour
             PlayerPrefs.SetInt("ReachedIndex", 1);
             resetPlayerPrefab = false;
         }
+
         unlockLevel = PlayerPrefs.GetInt("UnlockLeel", 1);
         return unlockLevel;
     }

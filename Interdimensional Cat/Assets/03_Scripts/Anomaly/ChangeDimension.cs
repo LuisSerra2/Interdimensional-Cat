@@ -33,10 +33,13 @@ public class ChangeDimension : MonoBehaviour
         {
             NetherObjects.SetActive(false);
             IceObjects.SetActive(true);
+            GameController.Instance.OnIceEvent();
+
         } else
         {
             IceObjects.SetActive(false);
             NetherObjects.SetActive(true);
+            GameController.Instance.OnNetherEvent();
         }
     }
 
@@ -45,10 +48,13 @@ public class ChangeDimension : MonoBehaviour
 
         if (OnNether)
         {
+            GameController.Instance.OnNetherEvent();
             IceObjects.SetActive(false);
             NetherObjects.SetActive(true);
+
         } else
         {
+            GameController.Instance.OnIceEvent();
             NetherObjects.SetActive(false);
             IceObjects.SetActive(true);
         }

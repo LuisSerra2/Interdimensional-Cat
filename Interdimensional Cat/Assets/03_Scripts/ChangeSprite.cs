@@ -3,33 +3,42 @@ using UnityEngine;
 
 public class ChangeSprite : MonoBehaviour
 {
-    [SerializeField] private SpriteRenderer spike;
+    [SerializeField] private SpriteRenderer[] spike;
     [SerializeField] private Sprite IceSpike;
     [SerializeField] private Sprite NetherSpike;
 
-    private void Start()
-    {
-        spike = GetComponent<SpriteRenderer>();
-    }
-
     private void OnEnable()
     {
-       // GameController.Instance.OnChangeSprite += OnChangeSprite;
+        GameController.Instance.OnNether += OnNether;
+        GameController.Instance.OnIce += OnIce;
     }
+
 
     private void OnDisable()
     {
-        //GameController.Instance.OnChangeSprite -= OnChangeSprite;
+        GameController.Instance.OnNether -= OnNether;
+        GameController.Instance.OnIce -= OnIce;
     }
 
-    private void OnChangeSprite(bool active)
-    {       
-        if (active)
+    private void OnNether()
+    {
+        foreach (var spike in spike)
         {
+            if (spike == null) return;
             spike.sprite = NetherSpike;
-        } else
+        }
+
+    }
+
+    private void OnIce()
+    {
+        foreach (var spike in spike)
         {
+            if (spike == null) return;
             spike.sprite = IceSpike;
         }
     }
+
+
+
 }

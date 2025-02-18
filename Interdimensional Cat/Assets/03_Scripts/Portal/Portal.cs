@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -15,17 +16,30 @@ public class Portal : MonoBehaviour, IInteractable
     {
         GameController.Instance.OnPortalUnlock -= CanEnterPortal;
     }
+
+
     public void OnInteract()
     {
         if (!canEnterPortal) return;
-        if (SceneManager.GetActiveScene().buildIndex >= PlayerPrefs.GetInt("ReachedIndex"))
+
+        int reachedIndex = PlayerPrefs.GetInt("ReachedIndex", 1);
+        int unlockLevel = PlayerPrefs.GetInt("UnlockLeel", 1);
+
+        if (SceneManager.GetActiveScene().buildIndex >= reachedIndex)
         {
             PlayerPrefs.SetInt("ReachedIndex", SceneManager.GetActiveScene().buildIndex + 1);
-            PlayerPrefs.SetInt("UnlockLeel", PlayerPrefs.GetInt("UnlockLeel", 1) + 1);
+            PlayerPrefs.SetInt("UnlockLeel", unlockLevel + 1);
             PlayerPrefs.Save();
 
             GameController.Instance.SaveFish();
         }
+
+        StartCoroutine(LoadNextScene());
+    }
+
+    private IEnumerator LoadNextScene()
+    {
+        yield return new WaitForSeconds(0.5f);
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
 

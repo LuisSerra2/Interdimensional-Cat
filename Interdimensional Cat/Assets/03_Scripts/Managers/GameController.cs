@@ -20,6 +20,13 @@ public class GameController : MonoBehaviour
     [HideInInspector]
     public Action OnAnomalyFinish;
     #endregion
+
+    #region Dimensions
+    [HideInInspector]
+    public Action OnNether;
+    [HideInInspector]
+    public Action OnIce;
+    #endregion
     
 
     #region portal
@@ -35,11 +42,6 @@ public class GameController : MonoBehaviour
     #region Menu
     [HideInInspector]
     public Action OnMenu;
-    #endregion
-    
-    #region ChangeSprite
-    [HideInInspector]
-    public Action<bool> OnChangeSprite;
     #endregion
 
     private void Awake()
@@ -206,10 +208,14 @@ public class GameController : MonoBehaviour
 
     #endregion
     
-    #region ChangeSprite
-    public void OnChangeSpriteEvent(bool active)
+    #region Dimension
+    public void OnNetherEvent()
     {
-        OnChangeSprite?.Invoke(active);
+        OnNether?.Invoke();
+    }
+    public void OnIceEvent()
+    {
+        OnIce?.Invoke();
     }
 
     #endregion
