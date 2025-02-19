@@ -9,7 +9,8 @@ public enum GameState
     Intro,
     Playing,
     Death,
-    Menu
+    Menu,
+    OnPortal
 }
 
 public class PlayerController : MonoBehaviour
@@ -115,6 +116,8 @@ public class PlayerController : MonoBehaviour
                     GameController.Instance.OnMenuEvent();
                 }
                 break;
+            case GameState.OnPortal:
+                break;
         }
 
     }
@@ -148,6 +151,9 @@ public class PlayerController : MonoBehaviour
                     TurnCheck();
                 }
                 break;
+            case GameState.Death:
+                rb.linearVelocity = Vector2.zero;
+                break;
             case GameState.Menu:
                 rb.linearVelocity = Vector2.zero;
                 break;
@@ -166,7 +172,7 @@ public class PlayerController : MonoBehaviour
         movement = speedDif * accelRate * Time.deltaTime;
 
         bool wasGrounded = isGrounded;
-        isGrounded = Physics2D.OverlapCircle(groundCheck.position, 0.2f, groundLayer);
+        isGrounded = Physics2D.OverlapCircle(groundCheck.position, 0.1f, groundLayer);
 
         if (isGrounded)
         {

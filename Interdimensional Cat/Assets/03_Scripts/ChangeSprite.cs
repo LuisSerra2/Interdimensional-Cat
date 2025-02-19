@@ -3,9 +3,14 @@ using UnityEngine;
 
 public class ChangeSprite : MonoBehaviour
 {
-    [SerializeField] private SpriteRenderer[] spike;
+    private SpriteRenderer[] spikes;
     [SerializeField] private Sprite IceSpike;
     [SerializeField] private Sprite NetherSpike;
+
+    private void Start()
+    {
+        spikes = GetComponentsInChildren<SpriteRenderer>();
+    }
 
     private void OnEnable()
     {
@@ -22,20 +27,20 @@ public class ChangeSprite : MonoBehaviour
 
     private void OnNether()
     {
-        foreach (var spike in spike)
+        foreach (var spikes in spikes)
         {
-            if (spike == null) return;
-            spike.sprite = NetherSpike;
+            if (spikes == null) return;
+            spikes.sprite = NetherSpike;
         }
 
     }
 
     private void OnIce()
     {
-        foreach (var spike in spike)
+        foreach (var spikes in spikes)
         {
-            if (spike == null) return;
-            spike.sprite = IceSpike;
+            if (spikes == null) return;
+            spikes.sprite = IceSpike;
         }
     }
 

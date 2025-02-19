@@ -34,12 +34,6 @@ public class Portal : MonoBehaviour, IInteractable
             GameController.Instance.SaveFish();
         }
 
-        StartCoroutine(LoadNextScene());
-    }
-
-    private IEnumerator LoadNextScene()
-    {
-        yield return new WaitForSeconds(0.5f);
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
 
