@@ -47,6 +47,9 @@ TagManager:
   - name: Enviroment
     uniqueID: 852635629
     locked: 0
+  - name: Decoration
+    uniqueID: 3489766765
+    locked: 0
   - name: Player
     uniqueID: 2228416325
     locked: 0

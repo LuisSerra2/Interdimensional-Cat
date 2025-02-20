@@ -122,8 +122,15 @@ public class LevelMenu : MonoBehaviour
 
     private void OnLevelButtonClick(int index)
     {
-        string levelName = (index == 1) ? "Tutorial" : (index - 1).ToString();
-        SceneManager.LoadScene(levelName);
+        int maxLevel = levelsButtons.Length; 
+        if (index >= maxLevel + 1)
+        {
+            SceneManager.LoadScene("EndScreen"); 
+        } else
+        {
+            string levelName = (index == 1) ? "Tutorial" : (index - 1).ToString();
+            SceneManager.LoadScene(levelName);
+        }
     }
 
     private int GetPanelIndex(int currentIndex, int direction)

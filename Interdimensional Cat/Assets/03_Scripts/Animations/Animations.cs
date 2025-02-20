@@ -21,9 +21,6 @@ public class Animations : MonoBehaviour
 
     [SerializeField] private AnimationsType Type;
 
-    [SerializeField]
-    private bool IsUI = false;
-
     private Vector2 InitialPosition;
     private Vector3 InitialScale;
     private Coroutine positionCoroutine;
